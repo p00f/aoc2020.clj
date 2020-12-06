@@ -11,7 +11,9 @@
   "checks the validity of password+conditions"
   [password]
   (let [p-list (s/split password #"\ ")]
-    (let [range (map #(Integer/parseInt %) (s/split (first p-list) #"\-"))
+    (let [range (-> (first p-list)
+                    (s/split #"\-")
+                    (->> (map #(Integer/parseInt %))))
           letter (first (second p-list))
           pwd (nth p-list 2)]
       (let [occurrences (get (frequencies pwd) letter)]
