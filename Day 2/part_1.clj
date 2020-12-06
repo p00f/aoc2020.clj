@@ -1,4 +1,4 @@
-(ns q2
+(ns d2_1
   (:require [clojure.string :as s]))
 
 (defn get-list [filename]
@@ -19,8 +19,14 @@
           false
           (<= (first range) occurrences (second range)))))))
 
-(let [passwords (get-list "/home/p00f/stuff/aoc2020/input/2.txt")
-      valid-passwords 0]
-  (count (for [pwd passwords
-               :when (check-validity pwd)]
-          (inc valid-passwords))))
+(defn answer [passwords]
+  (let [valid-passwords 0]
+    (count (for [pwd passwords
+                 :when (check-validity pwd)]
+            (inc valid-passwords)))))
+
+(->> *command-line-args*
+     first
+     get-list
+     answer
+     println)

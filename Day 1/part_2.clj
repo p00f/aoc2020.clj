@@ -1,4 +1,4 @@
-(ns q1
+(ns d1_2
   (:require [clojure.string :as s]))
 
 (defn get-list [filename]
@@ -8,10 +8,16 @@
        (map #(Integer/parseInt %))
        set))
 
-(let [numbers (get-list "/home/p00f/stuff/aoc2020/input/1.txt")]
+(defn answer [numbers]
   (for [a numbers
         b numbers
         :let [c (- 2020 a b)]
         :when (<= a b c)
         :when (contains? numbers c)]
-       (* a b c)))
+    (* a b c)))
+
+(->> *command-line-args*
+     first
+     get-list
+     answer
+     println)

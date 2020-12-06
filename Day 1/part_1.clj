@@ -1,4 +1,4 @@
-(ns q1
+(ns d1_1
   (:require [clojure.string :as s]))
 
 (defn get-list [filename]
@@ -8,9 +8,15 @@
        (map #(Integer/parseInt %))
        set))
 
-(let [numbers (get-list "/home/p00f/stuff/aoc2020/input/1.txt")]
+(defn answer [numbers]
   (for [a numbers
         :let [b (- 2020 a)]
-        :when (<= a b)               ;; avoid going a > 1010 because after this it'll be images
+        :when (<= a b)
         :when (contains? numbers b)]
-       (* a  b)))
+    (* a b)))
+
+(->> *command-line-args*
+     first
+     get-list
+     answer
+     println)
