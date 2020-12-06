@@ -7,23 +7,23 @@
        s/split-lines
        set))
 
-(defn check-validity
+(defn valid?
   "checks the validity of password+conditions"
   [password]
-  (let [p-list (s/split password #"\ ")]
-    (let [range (-> (first p-list)
-                    (s/split #"\-")
-                    (->> (map #(Integer/parseInt %))))
-          letter (first (second p-list))
-          pwd (nth p-list 2)]
-      (let [occurrences (get (frequencies pwd) letter)]
-        (if (nil? occurrences)
-          false
-          (<= (first range) occurrences (second range)))))))
+  (let [p-list (s/split password #"\ ")
+        range (-> (first p-list)
+                  (s/split #"\-")
+                  (->> (map #(Integer/parseInt %))))
+        letter (first (second p-list))
+        pwd (nth p-list 2)
+        occurrences (get (frequencies pwd) letter)]
+       (if (nil? occurrences)
+         false
+         (<= (first range) occurrences (second range)))))
 
 (defn answer [passwords]
   (count (for [pwd passwords
-               :when (check-validity pwd)]
+               :when (valid? pwd)]
           1)))
 
 (->> *command-line-args*

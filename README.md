@@ -2,3 +2,4 @@
 Run files with the input file as argument, like
 `clojure "Day 1/part_1.clj" "my-input.txt"`.
 I've included my inputs.
+Part 1 and part 2 of a given day are mostly repetitive (I've copied most functions verbatim), but I've separated them to enhance readability.
