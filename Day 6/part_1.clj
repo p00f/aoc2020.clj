@@ -7,12 +7,13 @@
 
 (defn get-group-answers
   [group]
-  (vector (s/split group #"\n")))
+  (first (vector (s/split group #"\n"))))
 
 (defn unique-letters
   [group-answers]
-  (let [string_ (reduce str (first group-answers))]
+  (let [string_ (reduce str group-answers)]
     (count (frequencies string_))))
+
 (defn answer
   [groups]
   (reduce + (for [group groups]
