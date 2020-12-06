@@ -29,10 +29,9 @@
                (= letter))))))
 
 (defn answer [passwords]
-  (let [valid-passwords 0]
-    (count (for [pwd passwords
-                 :when (check-validity pwd)]
-            (inc valid-passwords)))))
+  (count (for [pwd passwords
+               :when (check-validity pwd)]
+          1)))
 
 (->> *command-line-args*
      first

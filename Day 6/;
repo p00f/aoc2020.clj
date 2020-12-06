@@ -1,0 +1,18 @@
+(ns d3_1
+  (:require [clojure.string :as s]))
+
+(defn get-groups
+  [filename]
+  (set (s/split (slurp filename) #"\n\n")))
+
+(defn get-group-answers
+  [group]
+  (vector (s/split group #"\n")))
+
+(defn unique-letters
+  [group-answers]
+  (let [string_ ""]
+    (for [answer group-answers]
+      (conj! answer string_))
+    string_))
+(unique-letters (get-group-answers (first (get-groups "/home/p00f/stuff/aoc2020/Day 3/input.txt"))))
