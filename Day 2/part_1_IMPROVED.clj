@@ -1,4 +1,4 @@
-;; Credits - Fred OVerflow on YouTube
+;; Credits - Fred Overflow on YouTube
 
 (ns d2_1_i
   (:require [clojure.string :as s]))
@@ -7,7 +7,8 @@
   (->> filename
        slurp
        s/split-lines
-       vector))
+       vector
+       first))
 
 (defn parse-pwd-cond-str
   [pwd-cond-str]
@@ -34,7 +35,8 @@
                :when (valid? (parse-pwd-cond-str pwd-cond-str))]
           1)))
 
-(->> "/home/p00f/stuff/aoc2020/Day 2/input.txt"
-     get-list
+(->> *command-line-args*
      first
-     answer)
+     get-list
+     answer
+     println)

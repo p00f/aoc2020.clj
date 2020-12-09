@@ -5,7 +5,8 @@
   (->> filename
        slurp
        s/split-lines
-       set))
+       vector
+       first))
 
 (defn valid?
   "checks the validity of password+conditions"
