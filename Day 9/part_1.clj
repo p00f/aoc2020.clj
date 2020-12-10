@@ -25,4 +25,5 @@
 (-> *command-line-args*
     first
     get-input
-    answer)
+    answer
+    println)
