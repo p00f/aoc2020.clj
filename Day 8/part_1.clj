@@ -27,6 +27,9 @@
           :jmp (recur acc (+ pc arg) (conj visited pc))
           :nop (recur acc (inc pc) (conj visited pc)))))))
 
-(let [program (->> "/home/p00f/stuff/aoc2020/Day 8/input.txt"
-               get-list
-               (mapv parse-intrn))])
+(->> *command-line-args*
+     first
+     get-list
+     (mapv parse-intrn)
+     execute
+     println)
