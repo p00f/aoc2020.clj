@@ -18,7 +18,7 @@
 
 (defn answer [v]
   (loop [i 25]
-    (if (nil? (get (frequencies (subv-sums i v)) (get v i)))
+    (if-not (contains? (subv-sums i v) (get v i))
       (nth v i)
       (recur (inc i)))))
 
