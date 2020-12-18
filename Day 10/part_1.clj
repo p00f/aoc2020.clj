@@ -16,13 +16,14 @@
 (defn answer [v]
   (let [diffs (map
                 (fn [[a b]] (- b a))
-                (partition 2 1 v))]
-    (* ((frequencies diffs) 1) ((frequencies diffs) 3))))
-
+                (partition 2 1 v))
+        {ones 1, threes 3} (frequencies diffs)]
+    (* ones threes)))
 
 (-> *command-line-args*
     first
     get-input
     complete-vec
     vec
-    answer)
+    answer
+    println)
